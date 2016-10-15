@@ -6,8 +6,11 @@ import {Component} from 'angular2/core';
         <h1>Adressbook</h1>
         <br />
         Hier kommen Kontakte:
-        <h3>{{contact.firstName}} {{contact.lastName}}</h3>
-        <table>
+        <h3 (click)="onSelect()"
+            [class.clicked]="showDetail === true">
+            {{contact.firstName}} {{contact.lastName}}</h3>
+        <input [(ngModel)]="contact.firstName" type="text">
+        <table *ngIf="showDetail === true">
             <tr>
                 <td>
                     Phone Number
@@ -29,4 +32,10 @@ import {Component} from 'angular2/core';
 })
 export class AdreessbookComponent {
     public contact = {firstName: "Angelo", lastName: "Conconi", phone: "079 542 66 56", eMail: "angelo.conconi@gmail.com"};
+
+    showDetail = false;
+    
+    onSelect(){
+        this.showDetail = true;
+    }
 }
