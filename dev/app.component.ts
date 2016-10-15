@@ -3,7 +3,7 @@ import {MyComponentComponent} from "./my-component.component"
 @Component({
     selector: 'my-app',
     template: `
-        <h1>Angular 2 Boilerplate</h1>
+        <h1>Angular 2 Tutorial</h1>
         <p>Ciao Pfau!</p>
         <my-component></my-component>
     `,
