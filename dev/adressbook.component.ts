@@ -4,19 +4,19 @@ import {Component} from 'angular2/core';
     selector: 'adressbook',
     template: `
         <h1>Adressbook</h1>
-        <br />
-        Hier kommen Kontakte:
-        <h3 (click)="onSelect()"
-            [class.clicked]="showDetail === true">
-            {{contact.firstName}} {{contact.lastName}}</h3>
-        <input [(ngModel)]="contact.firstName" type="text">
-        <table *ngIf="showDetail === true">
+        <ul>
+            <li *ngFor="#contact of contacts"
+                (click)="onSelect(contact)" >
+                {{contact.firstName}} {{contact.lastName}}
+            </li>
+        </ul>
+       <table *ngIf="showDetail === true">
             <tr>
                 <td>
                     Phone Number
                 </td>
                 <td>
-                    {{contact.phone}}
+                    {{selectedContact.phone}}
                 </td>
             </tr>
             <tr>
@@ -24,18 +24,25 @@ import {Component} from 'angular2/core';
                     E-Mail
                 </td>
                 <td>
-                    {{contact.eMail}}
-                </td>
+                    {{selectedContact.eMail}}
+                </td> 
             </tr>
         </table>
     `
 })
 export class AdreessbookComponent {
-    public contact = {firstName: "Angelo", lastName: "Conconi", phone: "079 542 66 56", eMail: "angelo.conconi@gmail.com"};
+    public contacts = [
+        {firstName: "Angelo", lastName: "Conconi", phone: "079 542 66 56", eMail: "angelo.conconi@gmail.com"},
+        {firstName: "Luca", lastName: "Conconi", phone: "079 123 45 67", eMail: "luca.conconi@gmail.com"},
+        {firstName: "Lorena", lastName: "Malpartida", phone: "079 123 45 67", eMail: "lorena.conconi@gmail.com"},
+        {firstName: "Buddy", lastName: "Conconi", phone: "079 987 65 43", eMail: "buddy.conconi@gmail.com"}
+    ];
 
+    selectedContact = {};
     showDetail = false;
     
-    onSelect(){
+    onSelect(contact){
+        this.selectedContact = contact;
         this.showDetail = true;
     }
 }
