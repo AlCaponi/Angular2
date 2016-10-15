@@ -2,14 +2,29 @@ import {Component} from 'angular2/core';
 @Component ({
     selector: 'contact',
     template: `
-        <input [(ngModel)]="selectedContact.firstName" type="text">
         <table>
+            <tr>
+                <td>
+                    First Name
+                </td>
+                <td>
+                    <input [(ngModel)]="selectedContact.firstName" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name
+                </td>
+                <td>
+                    <input [(ngModel)]="selectedContact.lastName" type="text">
+                </td>
+            </tr>
             <tr>
                 <td>
                     Phone Number
                 </td>
                 <td>
-                    {{selectedContact.phone}}
+                    <input [(ngModel)]="selectedContact.phone" type="text">
                 </td>
             </tr>
             <tr>
@@ -17,7 +32,7 @@ import {Component} from 'angular2/core';
                     E-Mail
                 </td>
                 <td>
-                    {{selectedContact.eMail}}
+                    <input [(ngModel)]="selectedContact.eMail" type="text">
                 </td> 
             </tr>
         </table>
