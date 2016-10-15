@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {TestComponent} from "./test.component";
+import {OnInit} from 'angular2/core';
 @Component({
     selector: 'my-component',
     template: `
@@ -15,6 +16,14 @@ import {TestComponent} from "./test.component";
     styleUrls: ['src/css/mycomponent.css'],
     directives: [TestComponent]
 })
-export class MyComponentComponent{
-    name = "Angelo Conconi!";
+export class MyComponentComponent implements OnInit{
+    name: string;
+
+    constructor() {
+        this.name = "Angelo Conconi";
+    }
+
+    ngOnInit():any {
+        this.name = "Florian Disler";
+    }
 }
