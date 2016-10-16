@@ -3,6 +3,7 @@ import {MyComponentComponent} from "./my-component.component";
 import {AdressbookComponent} from "./adressbook.component";
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 import {RouteConfig} from 'angular2/router';
+import {NewContactComponent} from "./contacts/new-contact.component";
 @Component({
     selector: 'my-app',
     template: `
@@ -21,7 +22,7 @@ import {RouteConfig} from 'angular2/router';
 })
 @RouteConfig([
     {path: "/contacts", name: "Contacts", component: AdressbookComponent},
-    {path: "/NewContact", name: "NewContact", component: AdressbookComponent},
+    {path: "/NewContact", name: "NewContact", component: NewContactComponent},
 ])
 export class AppComponent {
 
