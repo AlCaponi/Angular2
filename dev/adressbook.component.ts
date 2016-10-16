@@ -9,6 +9,6 @@ import {ContactListComponent} from "./contacts/contactlist.component";
     `,
     directives: [ContactListComponent]
 })
-export class AdreessbookComponent {
+export class AdressbookComponent {
 
 }

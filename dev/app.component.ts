@@ -1,16 +1,28 @@
 import {Component} from 'angular2/core';
 import {MyComponentComponent} from "./my-component.component";
-import {AdreessbookComponent} from "./adressbook.component";
+import {AdressbookComponent} from "./adressbook.component";
+import {ROUTER_DIRECTIVES} from 'angular2/router';
+import {RouteConfig} from 'angular2/router';
 @Component({
     selector: 'my-app',
     template: `
         <h1>Angular 2 Tutorial</h1>
         <p>Ciao Pfau!</p>
-        <my-component></my-component>
-        <adressbook></adressbook>
+        <header>
+            <nav>
+                <a [routerLink]="['Contacts']">Contacts</a>
+                <a [routerLink]="['NewContact']">Create Contact</a>
+            </nav>
+        </header>
+        <router-outlet></router-outlet>
+       <!-- <my-component></my-component> -->
     `,
-    directives: [MyComponentComponent, AdreessbookComponent]
+    directives: [MyComponentComponent, AdressbookComponent, ROUTER_DIRECTIVES]
 })
+@RouteConfig([
+    {path: "/contacts", name: "Contacts", component: AdressbookComponent},
+    {path: "/NewContact", name: "NewContact", component: AdressbookComponent},
+])
 export class AppComponent {
 
 }
