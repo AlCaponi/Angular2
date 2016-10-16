@@ -1,3 +1,5 @@
+import { Router } from 'angular2/router';
+import { Contact } from './contact';
 import { ContactService } from './contact.service';
 import {Component} from 'angular2/core';
 
@@ -9,7 +11,7 @@ import {Component} from 'angular2/core';
                     First Name
                 </td>
                 <td>
-                    <input type="text">
+                    <input type="text" id="firstName" #firstName>
                 </td>
             </tr>
             <tr>
@@ -17,7 +19,7 @@ import {Component} from 'angular2/core';
                     Last Name
                 </td> 
                 <td>
-                    <input type="text">
+                    <input type="text" id="lastName" #lastName>
                 </td>
             </tr>
             <tr>
@@ -25,7 +27,7 @@ import {Component} from 'angular2/core';
                     Phone Number
                 </td>
                 <td>
-                    <input  type="text">
+                    <input  type="text" id="phone" #phone>
                 </td>
             </tr>
             <tr>
@@ -33,22 +35,23 @@ import {Component} from 'angular2/core';
                     E-Mail
                 </td>
                 <td>
-                    <input type="text">
+                    <input type="text" id="eMail" #eMail>
                 </td> 
             </tr>
         </table>
-        <button (click)="onAddContact()">Create Contact</button>
+        <button (click)="onAddContact(firstName.value, lastName.value, phone.value, eMail.value)">Create Contact</button>
     `,
     providers: [ContactService]
 })
 
 export class NewContactComponent {
 
-    constructor(private _contactService: ContactService) {}
+    constructor(private _contactService: ContactService, private _router: Router) {}
 
-    onAddContact(){
-        const dummyContact = {firstName: "Dummy", lastName: "Contact", phone: "", eMail: ""};
-        this._contactService.insertContact(dummyContact);
+    onAddContact(firstName, lastName, phone, eMail){
+        let contact: Contact = {firstName: firstName, lastName: lastName, phone: phone, eMail: eMail};
+        this._contactService.insertContact(contact);
+        this._router.navigate(['Contacts'])
     }
 }
 
